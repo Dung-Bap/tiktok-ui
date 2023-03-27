@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimesCircle, faSpinner, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faTimesCircle, faSpinner, faSearch, faPlus } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
 import { Wrapper as PopperWrapper } from '~/component/Layout/components/Popper';
 
 import images from '~/assets/images';
 import styles from './Header.module.scss';
 import AccountItem from '../AccountItem';
+import Button from '~/component/Button';
 
 const cx = classNames.bind(styles);
 function Header() {
@@ -32,7 +33,6 @@ function Header() {
                                 <AccountItem />
                                 <AccountItem />
                                 <AccountItem />
-                                <AccountItem />
                             </PopperWrapper>
                         </div>
                     )}
@@ -48,7 +48,16 @@ function Header() {
                         </button>
                     </div>
                 </Tippy>
-                <div className={cx('action')}></div>
+                <div className={cx('action')}>
+                    <Button text leftIcon={<FontAwesomeIcon icon={faPlus} />}>
+                        {' '}
+                        Upload
+                    </Button>
+                    <Button rounded small>
+                        {' '}
+                        Log in
+                    </Button>
+                </div>
             </div>
         </header>
     );
