@@ -9,6 +9,7 @@
 .inner {
     height: 100%;
     width: 1150px;
+    padding: 0 24px 0 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -80,4 +81,19 @@
     color: var(--second-color);
     font-size: 1.4rem;
     font-weight: 400;
+}
+
+.action {
+    display: flex;
+    align-items: center;
+}
+
+// More-btn
+
+.more-btn {
+    font-size: 2rem;
+    margin-left: 28px;
+    background-color: transparent;
+    padding: 4px 8px;
+    cursor: pointer;
 }

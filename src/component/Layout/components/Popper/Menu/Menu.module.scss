@@ -1,0 +1,45 @@
+// Css Menu
+.menu-list {
+    width: 224px;
+}
+
+.menu-item {
+    font-size: 1.6rem;
+    background-color: var(--white-color);
+    color: var(--text-color);
+    padding: 11px 16px;
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    line-height: 2rem;
+
+    &:hover {
+        background: rgba(22, 24, 35, 0.03);
+    }
+}
+
+.menu-poper {
+    padding-bottom: 8px;
+}
+// Header
+.header {
+    position: relative;
+    height: 50px;
+    margin-top: -8px;
+}
+
+.back-btn {
+    width: 50px;
+    height: 100%;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.header-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
