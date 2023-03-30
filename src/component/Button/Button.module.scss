@@ -8,10 +8,11 @@
     background-color: var(--white-color);
     border: 1px solid transparent;
     user-select: none;
+    margin-right: 12px;
 
-    + .wrapper {
-        margin-left: 14px;
-    }
+    // + .wrapper {
+    //     margin-left: 14px;
+    // }
 
     &.disabled {
         pointer-events: none;
