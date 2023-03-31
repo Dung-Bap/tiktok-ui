@@ -1,23 +1,7 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faTimesCircle,
-    faSpinner,
-    faSearch,
-    faPlus,
-    faEllipsisVertical,
-    faEarthAsia,
-    faQuestionCircle,
-    faKeyboard,
-    faMoon,
-    faInbox,
-    faUser,
-    faCoins,
-    faGear,
-    faSignOut,
-} from '@fortawesome/free-solid-svg-icons';
-import { faCommentDots } from '@fortawesome/free-regular-svg-icons';
+import { faTimesCircle, faSpinner, faSearch, faPlus, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import HeadlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
@@ -28,11 +12,23 @@ import styles from './Header.module.scss';
 import AccountItem from '../AccountItem';
 import Button from '~/component/Button';
 import Menu from '../Popper/Menu';
+import {
+    CoinIcon,
+    DarkmodeIcon,
+    FeedbackIcon,
+    InboxIcon,
+    KeyboardIcon,
+    LanguageIcon,
+    LogoutIcon,
+    MessageIcon,
+    ProfileIcon,
+    SettingIcon,
+} from '~/component/Icons';
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
     {
-        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        icon: <LanguageIcon />,
         title: 'English',
         children: {
             title: 'Language',
@@ -49,39 +45,39 @@ const MENU_ITEMS = [
         },
     },
     {
-        icon: <FontAwesomeIcon icon={faQuestionCircle} />,
+        icon: <FeedbackIcon />,
         title: 'Feedback and help',
         to: '/feedback',
     },
     {
-        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        icon: <KeyboardIcon />,
         title: 'Keyboard shortcuts',
     },
     {
-        icon: <FontAwesomeIcon icon={faMoon} />,
+        icon: <DarkmodeIcon />,
         title: 'Dark mode',
     },
 ];
 
 const MENU_PROFILES = [
     {
-        icon: <FontAwesomeIcon icon={faUser} />,
+        icon: <ProfileIcon />,
         title: 'View profiles',
         to: '/users',
     },
     {
-        icon: <FontAwesomeIcon icon={faCoins} />,
+        icon: <CoinIcon />,
         title: 'Get coins',
         to: '/coins',
     },
     {
-        icon: <FontAwesomeIcon icon={faGear} />,
+        icon: <SettingIcon />,
         title: 'Settings',
         to: '/Settings',
     },
     ...MENU_ITEMS,
     {
-        icon: <FontAwesomeIcon icon={faSignOut} />,
+        icon: <LogoutIcon />,
         title: 'Log out',
         to: '/logout',
         separate: true,
@@ -141,13 +137,13 @@ function Header() {
                                 Upload
                             </Button>
                             <Tippy delay={[0, 100]} content="Messages" placement="bottom">
-                                <button>
-                                    <FontAwesomeIcon className={cx('action-btn')} icon={faCommentDots} />
+                                <button className={cx('action-btn')}>
+                                    <MessageIcon />
                                 </button>
                             </Tippy>
                             <Tippy delay={[0, 100]} content="Inbox" placement="bottom">
-                                <button>
-                                    <FontAwesomeIcon className={cx('action-btn')} icon={faInbox} />
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon />
                                 </button>
                             </Tippy>
                         </>
