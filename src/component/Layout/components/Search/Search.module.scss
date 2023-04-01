@@ -47,6 +47,19 @@
     right: 60px;
 }
 
+.loading {
+    animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .search-btn {
     font-size: 2rem;
     color: rgb(166 167 171);

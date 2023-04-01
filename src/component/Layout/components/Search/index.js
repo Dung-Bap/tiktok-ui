@@ -13,12 +13,28 @@ function Search() {
     const [searchResults, setSearchResults] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const [showSearchResult, setShowSearchResult] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResults([1, 2, 3]);
-        }, 0);
-    }, []);
+        // trim ở đây để loại bỏ dấu cách
+        if (!searchValue.trim()) {
+            // when deleting the search
+            setSearchResults([]);
+            return;
+        }
+        setLoading(true);
+        // encode để loại bỏ các ký tự như % ?
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+            .then((res) => res.json())
+            .then((res) => {
+                setSearchResults(res.data);
+                setLoading(false);
+            })
+            // when internet error
+            .catch(() => {
+                setLoading(false);
+            });
+    }, [searchValue]);
 
     const inputRef = useRef();
 
@@ -40,10 +56,9 @@ function Search() {
                 <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                     <PopperWrapper>
                         <h4 className={cx('search-title')}> Accounts</h4>
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
-                        <AccountItem />
+                        {searchResults.map((result) => (
+                            <AccountItem key={result.id} data={result} />
+                        ))}
                     </PopperWrapper>
                 </div>
             )}
@@ -53,17 +68,24 @@ function Search() {
                 <input
                     ref={inputRef}
                     value={searchValue}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={(e) => {
+                        let value = e.target.value;
+                        if (value.trim() === '') {
+                            setSearchValue('');
+                        } else {
+                            setSearchValue(value);
+                        }
+                    }}
                     onFocus={() => setShowSearchResult(true)}
                     placeholder="Search account and videos"
                     spellCheck={false}
                 />
-                {searchValue && (
+                {!!searchValue && !loading && (
                     <button onClick={handelClear} className={cx('clear')}>
                         <FontAwesomeIcon icon={faTimesCircle} />
                     </button>
                 )}
-                {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner} /> */}
+                {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
                 <button className={cx('search-btn')}>
                     <FontAwesomeIcon icon={faSearch} />
                 </button>
