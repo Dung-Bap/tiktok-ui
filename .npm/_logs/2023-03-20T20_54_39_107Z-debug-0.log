@@ -1,0 +1,282 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@9.5.0
+2 info using node@v18.14.2
+3 timing npm:load:whichnode Completed in 1ms
+4 timing config:load:defaults Completed in 1ms
+5 timing config:load:file:/usr/local/lib/node_modules/npm/npmrc Completed in 1ms
+6 timing config:load:builtin Completed in 1ms
+7 timing config:load:cli Completed in 1ms
+8 timing config:load:env Completed in 0ms
+9 timing config:load:file:/Users/dungbap/Library/Caches/typescript/4.7/.npmrc Completed in 0ms
+10 timing config:load:project Completed in 0ms
+11 timing config:load:file:/Users/dungbap/.npmrc Completed in 0ms
+12 timing config:load:user Completed in 0ms
+13 timing config:load:file:/usr/local/etc/npmrc Completed in 0ms
+14 timing config:load:global Completed in 0ms
+15 timing config:load:setEnvs Completed in 1ms
+16 timing config:load Completed in 5ms
+17 timing npm:load:configload Completed in 5ms
+18 timing npm:load:mkdirpcache Completed in 0ms
+19 timing npm:load:mkdirplogs Completed in 0ms
+20 verbose title npm install @types/graceful-fs@ts4.7 @types/universalify@ts4.7
+21 verbose argv "install" "--ignore-scripts" "@types/graceful-fs@ts4.7" "@types/universalify@ts4.7" "--save-dev" "--user-agent" "typesInstaller/4.7.3"
+22 timing npm:load:setTitle Completed in 6ms
+23 timing config:load:flatten Completed in 1ms
+24 timing npm:load:display Completed in 1ms
+25 verbose logfile logs-max:10 dir:/Users/dungbap/.npm/_logs/2023-03-20T20_54_39_107Z-
+26 verbose logfile /Users/dungbap/.npm/_logs/2023-03-20T20_54_39_107Z-debug-0.log
+27 timing npm:load:logFile Completed in 3ms
+28 timing npm:load:timers Completed in 0ms
+29 timing npm:load:configScope Completed in 0ms
+30 timing npm:load Completed in 17ms
+31 timing arborist:ctor Completed in 1ms
+32 silly logfile start cleaning logs, removing 1 files
+33 silly logfile done cleaning log files
+34 timing idealTree:init Completed in 52ms
+35 timing arborist:ctor Completed in 0ms
+36 http fetch GET 200 https://registry.npmjs.org/@types%2funiversalify 233ms (cache miss)
+37 http fetch GET 200 https://registry.npmjs.org/@types%2fgraceful-fs 254ms (cache revalidated)
+38 timing idealTree:userRequests Completed in 259ms
+39 silly idealTree buildDeps
+40 silly fetch manifest @types/universalify@1.0.0
+41 silly fetch manifest @types/graceful-fs@4.1.6
+42 silly placeDep ROOT @types/graceful-fs@4.1.6 OK for:  want: 4.1.6
+43 silly placeDep ROOT @types/universalify@1.0.0 OK for:  want: 1.0.0
+44 timing idealTree:#root Completed in 3ms
+45 timing idealTree:node_modules/@types/graceful-fs Completed in 0ms
+46 timing idealTree:node_modules/@types/universalify Completed in 0ms
+47 timing idealTree:buildDeps Completed in 5ms
+48 timing idealTree:fixDepFlags Completed in 0ms
+49 timing idealTree Completed in 318ms
+50 timing reify:loadTrees Completed in 318ms
+51 timing reify:diffTrees Completed in 3ms
+52 silly reify moves {}
+53 timing reify:retireShallow Completed in 1ms
+54 timing reify:createSparse Completed in 1ms
+55 timing reify:loadBundles Completed in 0ms
+56 silly audit bulk request {
+56 silly audit   '@babel/code-frame': [ '7.18.6' ],
+56 silly audit   '@babel/helper-string-parser': [ '7.19.4' ],
+56 silly audit   '@babel/helper-validator-identifier': [ '7.19.1' ],
+56 silly audit   '@babel/highlight': [ '7.18.6' ],
+56 silly audit   'ansi-styles': [ '3.2.1', '4.3.0', '5.2.0' ],
+56 silly audit   chalk: [ '2.4.2', '4.1.2' ],
+56 silly audit   'color-convert': [ '1.9.3', '2.0.1' ],
+56 silly audit   'color-name': [ '1.1.3', '1.1.4' ],
+56 silly audit   'escape-string-regexp': [ '1.0.5', '2.0.0' ],
+56 silly audit   'has-flag': [ '3.0.0', '4.0.0' ],
+56 silly audit   'supports-color': [ '5.5.0', '7.2.0' ],
+56 silly audit   '@babel/parser': [ '7.21.2' ],
+56 silly audit   '@babel/runtime': [ '7.19.0' ],
+56 silly audit   '@babel/types': [ '7.21.2' ],
+56 silly audit   '@jest/expect-utils': [ '29.5.0' ],
+56 silly audit   '@jest/schemas': [ '29.4.3' ],
+56 silly audit   '@jest/types': [ '27.5.1', '29.5.0' ],
+56 silly audit   '@sinclair/typebox': [ '0.25.24' ],
+56 silly audit   '@types/array.prototype.flat': [ '1.2.1' ],
+56 silly audit   '@types/autoprefixer': [ '9.7.2' ],
+56 silly audit   '@types/babel__core': [ '7.20.0' ],
+56 silly audit   '@types/babel__generator': [ '7.6.4' ],
+56 silly audit   '@types/babel__preset-env': [ '7.9.2' ],
+56 silly audit   '@types/babel__template': [ '7.4.1' ],
+56 silly audit   '@types/babel__traverse': [ '7.18.2' ],
+56 silly audit   '@types/babel-core': [ '6.25.7' ],
+56 silly audit   '@types/babel-generator': [ '6.25.5' ],
+56 silly audit   '@types/babel-template': [ '6.25.2' ],
+56 silly audit   '@types/babel-traverse': [ '6.25.7' ],
+56 silly audit   '@types/babel-types': [ '7.0.11' ],
+56 silly audit   '@types/babylon': [ '6.16.6' ],
+56 silly audit   '@types/body-parser': [ '1.19.2' ],
+56 silly audit   '@types/browserslist': [ '4.15.0' ],
+56 silly audit   '@types/bump-regex': [ '4.1.1' ],
+56 silly audit   '@types/caseless': [ '0.12.2' ],
+56 silly audit   '@types/chai': [ '4.3.4' ],
+56 silly audit   '@types/chart.js': [ '2.9.37' ],
+56 silly audit   '@types/cheerio': [ '0.22.31' ],
+56 silly audit   '@types/codemirror': [ '5.60.5' ],
+56 silly audit   '@types/color-convert': [ '2.0.0' ],
+56 silly audit   '@types/color-name': [ '1.1.1' ],
+56 silly audit   '@types/config': [ '3.3.0' ],
+56 silly audit   '@types/connect': [ '3.4.35' ],
+56 silly audit   '@types/connect-history-api-fallback': [ '1.3.5' ],
+56 silly audit   '@types/core-js': [ '2.5.5' ],
+56 silly audit   '@types/craco__craco': [ '6.4.0' ],
+56 silly audit   '@types/customize-cra': [ '1.0.4' ],
+56 silly audit   '@types/dagre': [ '0.7.48' ],
+56 silly audit   '@types/enzyme': [ '3.10.12' ],
+56 silly audit   '@types/eslint': [ '8.21.3' ],
+56 silly audit   '@types/esprima': [ '4.0.3' ],
+56 silly audit   '@types/estraverse': [ '5.1.2' ],
+56 silly audit   '@types/estree': [ '1.0.0' ],
+56 silly audit   '@types/expect': [ '1.20.4' ],
+56 silly audit   '@types/expect.js': [ '0.3.29' ],
+56 silly audit   '@types/express': [ '4.17.14' ],
+56 silly audit   '@types/express-serve-static-core': [ '4.17.31' ],
+56 silly audit   '@types/flowjs': [ '2.13.9' ],
+56 silly audit   '@types/geojson': [ '7946.0.10' ],
+56 silly audit   '@types/glob': [ '8.1.0' ],
+56 silly audit   '@types/glob-stream': [ '6.1.1' ],
+56 silly audit   '@types/google-map-react': [ '2.1.7' ],
+56 silly audit   '@types/gulp': [ '4.0.10' ],
+56 silly audit   '@types/gulp-bump': [ '2.8.2' ],
+56 silly audit   '@types/gulp-filter': [ '3.0.35' ],
+56 silly audit   '@types/gulp-mocha': [ '0.0.33' ],
+56 silly audit   '@types/has': [ '1.0.0' ],
+56 silly audit   '@types/history': [ '4.7.11' ],
+56 silly audit   '@types/hoist-non-react-statics': [ '3.3.1' ],
+56 silly audit   '@types/http-proxy': [ '1.17.9' ],
+56 silly audit   '@types/i18n': [ '0.13.4' ],
+56 silly audit   '@types/inherits': [ '0.0.30' ],
+56 silly audit   '@types/istanbul-lib-coverage': [ '2.0.4' ],
+56 silly audit   '@types/istanbul-lib-report': [ '3.0.0' ],
+56 silly audit   '@types/istanbul-reports': [ '3.0.1' ],
+56 silly audit   '@types/jest': [ '29.5.0' ],
+56 silly audit   '@types/json-schema': [ '7.0.11' ],
+56 silly audit   '@types/json-server': [ '0.14.4' ],
+56 silly audit   '@types/less': [ '3.0.3' ],
+56 silly audit   '@types/loadable__component': [ '5.13.4' ],
+56 silly audit   '@types/lodash': [ '4.14.186' ],
+56 silly audit   '@types/lowdb': [ '1.0.11' ],
+56 silly audit   '@types/mime': [ '3.0.1' ],
+56 silly audit   '@types/minimatch': [ '5.1.2' ],
+56 silly audit   '@types/minimist': [ '1.2.2' ],
+56 silly audit   '@types/mocha': [ '10.0.1' ],
+56 silly audit   '@types/node': [ '18.8.3' ],
+56 silly audit   '@types/numeral': [ '2.0.2' ],
+56 silly audit   '@types/object-assign': [ '4.0.30' ],
+56 silly audit   '@types/pathfinding': [ '0.0.6' ],
+56 silly audit   '@types/prop-types': [ '15.7.5' ],
+56 silly audit   '@types/qs': [ '6.9.7' ],
+56 silly audit   '@types/range-parser': [ '1.2.4' ],
+56 silly audit   '@types/react': [ '18.0.28' ],
+56 silly audit   '@types/react-dom': [ '18.0.11' ],
+56 silly audit   '@types/react-highlight-words': [ '0.16.4' ],
+56 silly audit   '@types/react-input-autosize': [ '2.2.1' ],
+56 silly audit   '@types/react-redux': [ '7.1.24' ],
+56 silly audit   '@types/react-router': [ '5.1.19' ],
+56 silly audit   '@types/react-router-config': [ '5.0.6' ],
+56 silly audit   '@types/react-router-dom': [ '5.3.3' ],
+56 silly audit   '@types/redux-logger': [ '3.0.9' ],
+56 silly audit   '@types/regenerator-runtime': [ '0.13.1' ],
+56 silly audit   '@types/request': [ '2.48.8' ],
+56 silly audit   '@types/rimraf': [ '2.0.5' ],
+56 silly audit   '@types/sass': [ '1.43.1' ],
+56 silly audit   '@types/scheduler': [ '0.16.2' ],
+56 silly audit   '@types/semver': [ '7.3.13' ],
+56 silly audit   '@types/serve-static': [ '1.15.0' ],
+56 silly audit   '@types/source-list-map': [ '0.1.2' ],
+56 silly audit   '@types/stack-utils': [ '2.0.1' ],
+56 silly audit   '@types/styled-components': [ '5.1.26' ],
+56 silly audit   '@types/supercluster': [ '7.1.0' ],
+56 silly audit   '@types/tap': [ '15.0.8' ],
+56 silly audit   '@types/tapable': [ '1.0.8' ],
+56 silly audit   '@types/tape': [ '4.13.2' ],
+56 silly audit   '@types/tern': [ '0.23.4' ],
+56 silly audit   '@types/testing-library__jest-dom': [ '5.14.5' ],
+56 silly audit   '@types/textarea-caret': [ '3.0.1' ],
+56 silly audit   '@types/tough-cookie': [ '4.0.2' ],
+56 silly audit   '@types/uglify-js': [ '3.17.0' ],
+56 silly audit   '@types/undertaker': [ '1.2.8' ],
+56 silly audit   '@types/undertaker-registry': [ '1.0.1' ],
+56 silly audit   '@types/validator': [ '13.7.12' ],
+56 silly audit   '@types/vinyl': [ '2.0.7' ],
+56 silly audit   '@types/vinyl-fs': [ '3.0.1' ],
+56 silly audit   '@types/webpack': [ '4.41.32' ],
+56 silly audit   '@types/webpack-bundle-analyzer': [ '3.9.4' ],
+56 silly audit   '@types/webpack-dev-server': [ '3.11.6' ],
+56 silly audit   '@types/webpack-sources': [ '3.2.0' ],
+56 silly audit   'source-map': [ '0.7.4', '0.6.1' ],
+56 silly audit   '@types/workbox-webpack-plugin': [ '5.1.8' ],
+56 silly audit   '@types/xo': [ '0.39.5' ],
+56 silly audit   '@types/yargs': [ '16.0.4', '17.0.22' ],
+56 silly audit   '@types/yargs-parser': [ '21.0.0' ],
+56 silly audit   anymatch: [ '3.1.2' ],
+56 silly audit   'async-done': [ '1.3.2' ],
+56 silly audit   asynckit: [ '0.4.0' ],
+56 silly audit   'binary-extensions': [ '2.2.0' ],
+56 silly audit   braces: [ '3.0.2' ],
+56 silly audit   browserslist: [ '4.21.4' ],
+56 silly audit   'caniuse-lite': [ '1.0.30001414' ],
+56 silly audit   chokidar: [ '3.5.3' ],
+56 silly audit   'ci-info': [ '3.8.0' ],
+56 silly audit   'combined-stream': [ '1.0.8' ],
+56 silly audit   csstype: [ '3.1.1' ],
+56 silly audit   'delayed-stream': [ '1.0.0' ],
+56 silly audit   'diff-sequences': [ '29.4.3' ],
+56 silly audit   'electron-to-chromium': [ '1.4.270' ],
+56 silly audit   'end-of-stream': [ '1.4.4' ],
+56 silly audit   escalade: [ '3.1.1' ],
+56 silly audit   eventemitter3: [ '4.0.7' ],
+56 silly audit   expect: [ '29.5.0' ],
+56 silly audit   'fill-range': [ '7.0.1' ],
+56 silly audit   'follow-redirects': [ '1.15.2' ],
+56 silly audit   'form-data': [ '2.5.1' ],
+56 silly audit   fsevents: [ '2.3.2' ],
+56 silly audit   'glob-parent': [ '5.1.2' ],
+56 silly audit   'graceful-fs': [ '4.2.11' ],
+56 silly audit   'hoist-non-react-statics': [ '3.3.2' ],
+56 silly audit   'http-proxy': [ '1.18.1' ],
+56 silly audit   'http-proxy-middleware': [ '1.3.1' ],
+56 silly audit   'is-binary-path': [ '2.1.0' ],
+56 silly audit   'is-extglob': [ '2.1.1' ],
+56 silly audit   'is-glob': [ '4.0.3' ],
+56 silly audit   'is-number': [ '7.0.0' ],
+56 silly audit   'is-plain-obj': [ '3.0.0' ],
+56 silly audit   'jest-diff': [ '29.5.0' ],
+56 silly audit   'jest-get-type': [ '29.4.3' ],
+56 silly audit   'jest-matcher-utils': [ '29.5.0' ],
+56 silly audit   'jest-message-util': [ '29.5.0' ],
+56 silly audit   'jest-util': [ '29.5.0' ],
+56 silly audit   'js-tokens': [ '4.0.0' ],
+56 silly audit   micromatch: [ '4.0.5' ],
+56 silly audit   'mime-db': [ '1.52.0' ],
+56 silly audit   'mime-types': [ '2.1.35' ],
+56 silly audit   moment: [ '2.29.4' ],
+56 silly audit   'node-releases': [ '2.0.6' ],
+56 silly audit   'normalize-path': [ '3.0.0' ],
+56 silly audit   once: [ '1.4.0' ],
+56 silly audit   picocolors: [ '0.2.1', '1.0.0' ],
+56 silly audit   picomatch: [ '2.3.1' ],
+56 silly audit   postcss: [ '7.0.39' ],
+56 silly audit   'pretty-format': [ '29.5.0' ],
+56 silly audit   'react-is': [ '18.2.0', '16.13.1' ],
+56 silly audit   'process-nextick-args': [ '2.0.1' ],
+56 silly audit   readdirp: [ '3.6.0' ],
+56 silly audit   redux: [ '4.2.0' ],
+56 silly audit   'regenerator-runtime': [ '0.13.9' ],
+56 silly audit   'requires-port': [ '1.0.0' ],
+56 silly audit   slash: [ '3.0.0' ],
+56 silly audit   'stack-utils': [ '2.0.6' ],
+56 silly audit   'stream-exhaust': [ '1.0.2' ],
+56 silly audit   'to-fast-properties': [ '2.0.0' ],
+56 silly audit   'to-regex-range': [ '5.0.1' ],
+56 silly audit   'types-registry': [ '0.1.636' ],
+56 silly audit   'update-browserslist-db': [ '1.0.9' ],
+56 silly audit   wrappy: [ '1.0.2' ],
+56 silly audit   '@types/graceful-fs': [ '4.1.6' ],
+56 silly audit   '@types/universalify': [ '1.0.0' ]
+56 silly audit }
+57 silly tarball no local data for @types/universalify@https://registry.npmjs.org/@types/universalify/-/universalify-1.0.0.tgz. Extracting by manifest.
+58 timing reifyNode:node_modules/@types/graceful-fs Completed in 7ms
+59 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 248ms
+60 timing auditReport:getReport Completed in 251ms
+61 silly audit report {}
+62 timing auditReport:init Completed in 0ms
+63 timing reify:audit Completed in 251ms
+64 http fetch GET 200 https://registry.npmjs.org/@types/universalify/-/universalify-1.0.0.tgz 813ms (cache miss)
+65 timing reifyNode:node_modules/@types/universalify Completed in 816ms
+66 timing reify:unpack Completed in 816ms
+67 timing reify:unretire Completed in 0ms
+68 timing build:queue Completed in 0ms
+69 timing build:deps Completed in 0ms
+70 timing build Completed in 0ms
+71 timing reify:build Completed in 0ms
+72 timing reify:trash Completed in 0ms
+73 timing reify:save Completed in 21ms
+74 timing reify Completed in 1173ms
+75 silly ADD node_modules/@types/universalify
+76 silly ADD node_modules/@types/graceful-fs
+77 timing command:install Completed in 1176ms
+78 verbose exit 0
+79 timing npm Completed in 1198ms
+80 info ok
