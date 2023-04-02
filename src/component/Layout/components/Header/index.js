@@ -3,11 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { Link } from 'react-router-dom';
 
 import images from '~/assets/images';
 import styles from './Header.module.scss';
 import Button from '~/component/Button';
 import Menu from '../Popper/Menu';
+
 import {
     CoinIcon,
     DarkmodeIcon,
@@ -21,6 +23,7 @@ import {
     SettingIcon,
 } from '~/component/Icons';
 import Search from '../Search';
+import routesConfig from '~/config/routes';
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -91,7 +94,11 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img src={images.logo.default} alt="TikTok"></img>
+                <div className={cx('custom-logo')}>
+                    <Link to={routesConfig.home} className={cx('tiktok-logo')}>
+                        <img src={images.logo.default} alt="TikTok" />
+                    </Link>
+                </div>
 
                 <Search />
 

@@ -27,8 +27,14 @@
 .menu-poper {
     padding-bottom: 8px;
 }
+
+.scroll-body {
+    overflow-y: auto;
+}
+
 // Header
 .header {
+    flex-shrink: 0;
     position: relative;
     height: 50px;
     margin-top: -8px;
