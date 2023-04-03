@@ -1,7 +1,7 @@
 import Header from './Header';
 import styles from './Menu.module.scss';
 import classNames from 'classnames/bind';
-import { Wrapper as PopperWrapper } from '~/component/Layout/components/Popper';
+import { Wrapper as PopperWrapper } from '~/layouts/components/Popper';
 import Tippy from '@tippyjs/react/headless';
 import MenuItem from './MenuItem';
 import { useState } from 'react';

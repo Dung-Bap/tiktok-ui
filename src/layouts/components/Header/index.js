@@ -23,7 +23,7 @@ import {
     SettingIcon,
 } from '~/component/Icons';
 import Search from '../Search';
-import routesConfig from '~/config/routes';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -95,7 +95,7 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('custom-logo')}>
-                    <Link to={routesConfig.home} className={cx('tiktok-logo')}>
+                    <Link to={config.routes.home} className={cx('tiktok-logo')}>
                         <img src={images.logo.default} alt="TikTok" />
                     </Link>
                 </div>
