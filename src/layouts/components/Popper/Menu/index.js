@@ -44,7 +44,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
                     <PopperWrapper className={cx('menu-poper')}>
                         {history.length > 1 && (
                             <Header
-                                title={'Language'}
+                                title={current.title}
                                 onBack={() => {
                                     setHistory((prev) => prev.slice(0, prev.length - 1));
                                 }}
