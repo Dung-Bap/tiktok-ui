@@ -85,7 +85,7 @@ function Search() {
                             }
                         }}
                         onFocus={() => setShowSearchResult(true)}
-                        placeholder="Search account and videos"
+                        placeholder="Search accounts and videos"
                         spellCheck={false}
                     />
                     {!!searchValue && !loading && (
