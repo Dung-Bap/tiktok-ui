@@ -13,6 +13,7 @@
 }
 
 .account-item {
+    cursor: pointer;
     padding: 8px;
     display: flex;
     flex-direction: row;
@@ -61,4 +62,13 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+}
+
+.more-btn {
+    color: rgb(254, 44, 85);
+    font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 6px;
 }
