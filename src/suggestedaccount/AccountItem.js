@@ -1,5 +1,3 @@
-import HeadlessTippy from '@tippyjs/react/headless';
-
 import { Wrapper as PopperWrapper } from '~/layouts/components/Popper';
 
 import classNames from 'classnames/bind';
@@ -7,6 +5,7 @@ import styles from './SuggestedAccount.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import AccountPreview from './AccountPreview/AccountPreview';
+import Tippy from '@tippyjs/react/headless';
 
 const cx = classNames.bind(styles);
 
@@ -22,7 +21,7 @@ function AccountItem({ data }) {
     };
     return (
         <div>
-            <HeadlessTippy placement="bottom" interactive delay={[800, 0]} render={renderPreview}>
+            <Tippy placement="bottom" delay={[800, 0]} render={renderPreview}>
                 <div className={cx('account-item')}>
                     <img className={cx('avatar')} alt="" src={data.avatar} />
                     <div className={cx('account-info')}>
@@ -31,7 +30,7 @@ function AccountItem({ data }) {
                         <p className={cx('name')}>{`${data.first_name} ${data.last_name}`}</p>
                     </div>
                 </div>
-            </HeadlessTippy>
+            </Tippy>
         </div>
     );
 }
