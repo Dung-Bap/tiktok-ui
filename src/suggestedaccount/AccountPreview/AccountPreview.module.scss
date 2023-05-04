@@ -1,6 +1,6 @@
 .wrapper {
     width: 320px;
-    padding: 20px;
+    padding: 9px 20px;
 }
 
 .header {
@@ -16,18 +16,9 @@
     object-fit: cover;
 }
 
-.btn-follow {
-    padding: 8px 30px;
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    border-color: var(--primary-color);
-    border-radius: 4px;
-
-    &:hover {
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fe2c55;
-        border-color: var(--primary-color);
-    }
-}
+// .btn-follow {
+//     padding: 8px 28px;
+// }
 
 .body {
     margin-top: 12px;
@@ -49,7 +40,7 @@
 }
 
 .analytics {
-    padding-top: 10px;
+    margin-top: 8px;
     font-size: 1.8rem;
 }
 

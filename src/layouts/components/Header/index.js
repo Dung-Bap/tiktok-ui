@@ -24,6 +24,7 @@ import {
 } from '~/component/Icons';
 import Search from '../Search';
 import config from '~/config';
+import Image from '~/component/Image';
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -132,10 +133,11 @@ function Header() {
                     )}
                     <Menu items={currentUser ? MENU_PROFILES : MENU_ITEMS} onChange={handelMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
-                                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/6c1986a6414b43a2fc8fdf0fd5b2a34d~c5_100x100.jpeg?x-expires=1679601600&x-signature=OBmMytGx%2BKgs6IneiUIca9b1vg0%3D"
+                                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/5587718fa97af29606494b3c577fbafb~c5_100x100.jpeg?x-expires=1683280800&x-signature=pKtUT2NiReROdpzJYtdmJZezrtw%3D"
                                 alt="Duyeennn"
+                                fallback="https://cdn.vectorstock.com/i/preview-1x/82/99/no-image-available-like-missing-picture-vector-43938299.jpg"
                             />
                         ) : (
                             <button className={cx('more-btn')}>

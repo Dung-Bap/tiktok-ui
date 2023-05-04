@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import AccountPreview from './AccountPreview/AccountPreview';
 import Tippy from '@tippyjs/react/headless';
+import Image from '~/component/Image';
 
 const cx = classNames.bind(styles);
 
@@ -21,9 +22,9 @@ function AccountItem({ data }) {
     };
     return (
         <div>
-            <Tippy placement="bottom" delay={[800, 0]} render={renderPreview}>
+            <Tippy appendTo={document.body} interactive placement="bottom" delay={[800, 0]} render={renderPreview}>
                 <div className={cx('account-item')}>
-                    <img className={cx('avatar')} alt="" src={data.avatar} />
+                    <Image className={cx('avatar')} alt="" src={data.avatar} />
                     <div className={cx('account-info')}>
                         <span className={cx('nick-name')}>{data.nickname}</span>
                         {data.tick && <FontAwesomeIcon className={cx('icon')} icon={faCheckCircle} />}

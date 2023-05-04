@@ -12,14 +12,28 @@ import {
     VolumeIcon,
     VolumeMutedIcon,
 } from '~/component/Icons';
+import { useEffect, useRef } from 'react';
+import { useInView } from 'react-intersection-observer';
+import Image from '~/component/Image';
 
 const cx = classNames.bind(styles);
 
 function RecomendListItem({ data }) {
+    const videoRef = useRef(null);
+    const [videoContainerRef, isInView] = useInView({ root: null, rootMargin: '20px', threshold: 0.7 });
+
+    useEffect(() => {
+        if (isInView) {
+            videoRef.current.play();
+        } else {
+            videoRef.current.pause();
+        }
+    }, [isInView]);
+
     return (
         <div className={cx('wrapper')}>
             <div className={cx('recommend-list')}>
-                <img className={cx('recommend-img')} alt="" src={data.user.avatar} />
+                <Image className={cx('recommend-img')} alt="" src={data.user.avatar} />
                 <div className={cx('recommend-container')}>
                     <div className={cx('recommend-content')}>
                         <div className={cx('recommend-title')}>
@@ -28,12 +42,11 @@ function RecomendListItem({ data }) {
                                 <FontAwesomeIcon className={cx('recommend-tick')} icon={faCheckCircle} />
                             )}
                             <h4 className={cx('recommend-nickname')}>{data.user.nickname}</h4>
-                            <button className={cx('recommend-btn')}>
+                            <span className={cx('recommend-btn')}>
                                 <Button small outline>
-                                    {' '}
                                     Follow
                                 </Button>
-                            </button>
+                            </span>
                         </div>
                         <div className={cx('recommend-description')}>
                             <span>{data.description}</span>
@@ -43,11 +56,17 @@ function RecomendListItem({ data }) {
                             {data.music}
                         </p>
                     </div>
-                    <div className={cx('recommend-video-wrapper')}>
+                    <div ref={videoContainerRef} className={cx('recommend-video-wrapper')}>
                         <div className={cx('recommend-video-container')}>
                             {/* <img className={cx('recommend-video-thumbnail')} alt="" src=""></img> */}
                             <div className={cx('recommend-video-content')}>
-                                <video className={cx('recommend-video')} src={data.file_url} loop controls></video>
+                                <video
+                                    className={cx('recommend-video')}
+                                    ref={videoRef}
+                                    src={data.file_url}
+                                    loop
+                                    muted
+                                ></video>
                                 <div className={cx('recommend-btn-toggle')}>
                                     <FontAwesomeIcon className={cx('recommend-btn-play')} icon={faPlay} />
                                     <FontAwesomeIcon className={cx('recommend-btn-pause')} icon={faPause} />
