@@ -1,6 +1,6 @@
 import * as request from '~/utils/request';
 
-export const getSuggested = async (page = 2, per_page = 5) => {
+export const getSuggested = async (page, per_page) => {
     try {
         const res = await request.get('users/suggested', {
             params: {

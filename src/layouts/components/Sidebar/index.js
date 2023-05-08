@@ -12,11 +12,12 @@ const cx = classNames.bind(styles);
 
 function Sidebar() {
     const [suggestedUsers, setSuggestedUsers] = useState([]);
-    const [followingUsers, setFollowingUsers] = useState([]);
+    const PERPAGE = 5;
+    const PAGE = Math.floor(Math.random() * 15 + 1);
 
     useEffect(() => {
         usersService
-            .getSuggested()
+            .getSuggested(PAGE, PERPAGE)
             .then((data) => {
                 setSuggestedUsers(data);
             })
@@ -38,8 +39,6 @@ function Sidebar() {
                 <MenuItem to={config.routes.live} icon={<LiveIcon />} iconActive={<LiveIconActive />} title="LIVE" />
             </Menu>
             <SuggestedAccount label={'Suggested accounts'} data={suggestedUsers} />
-            <SuggestedAccount label={'Suggested accounts'} data={suggestedUsers} />
-            <SuggestedAccount label={'Following accounts'} />
         </aside>
     );
 }

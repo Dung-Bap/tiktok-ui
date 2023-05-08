@@ -5,6 +5,11 @@ import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 function Button({
+    to,
+    href,
+    children,
+    onClick,
+    className,
     primary = false,
     outline = false,
     small = false,
@@ -14,10 +19,6 @@ function Button({
     rounded = false,
     leftIcon = false,
     rightIcon = false,
-    to,
-    href,
-    children,
-    onClick,
     ...passProps
 }) {
     let Comp = 'button';
@@ -42,6 +43,7 @@ function Button({
     }
 
     const classes = cx('wrapper', {
+        [className]: className,
         primary,
         outline,
         small,

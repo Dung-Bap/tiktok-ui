@@ -91,6 +91,7 @@
 }
 
 .recommend-video-container {
+    position: relative;
     height: calc(450px + (100vw - 768px) / 1152 * 200);
     position: relative;
     -webkit-background-size: cover;
@@ -100,6 +101,127 @@
     overflow: hidden;
     margin-right: 20px;
     object-fit: cover;
+
+    &:hover {
+        .recommend-btn-toggle,
+        .recommend-btn-voice {
+            display: block;
+        }
+        .recommend-btn-report {
+            display: flex;
+        }
+    }
+}
+
+.recommend-btn-toggle {
+    position: absolute;
+    display: none;
+    color: var(--white-color);
+    z-index: 99;
+    content: '';
+    bottom: 20px;
+    left: 20px;
+}
+
+.recommend-btn-play,
+.recommend-btn-pause {
+    padding: 10px;
+    height: 22px;
+}
+
+.recommend-volume-control {
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    background-color: rgba(22, 24, 35, 0.341);
+    border-radius: 20px;
+    bottom: 87px;
+    cursor: pointer;
+    height: 23px;
+    justify-content: center;
+    padding: 5px;
+    position: absolute;
+    right: 8px;
+    transform: rotate(-90deg);
+    transition: opacity 0.3s ease 0s;
+    width: 70px;
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.recommend-volume-bar {
+    background-color: hsla(0, 0%, 100%, 0.341);
+    border-radius: 5px;
+    height: 2px;
+    position: relative;
+    width: 45px;
+}
+
+.recommend-progress-bar {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 100%;
+    outline: none;
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        background-color: #fff;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}
+
+.recommend-progress-selector {
+    background-color: #fff;
+    border-radius: 4px;
+    bottom: 0;
+    height: 2px;
+    left: 0;
+    position: absolute;
+}
+
+.recommend-btn-voice {
+    position: absolute;
+    display: none;
+    content: '';
+    color: var(--white-color);
+    z-index: 2;
+    bottom: 24px;
+    right: 20px;
+    padding: 10px;
+    line-height: 0.2;
+    &:hover ~ .recommend-volume-control {
+        opacity: 1;
+    }
+}
+
+.recommend-btn-mute,
+.recommend-btn-volume {
+    height: 22px;
+}
+
+.recommend-btn-report {
+    position: absolute;
+    display: none;
+    align-items: center;
+    content: '';
+    top: 20px;
+    right: 20px;
+    z-index: 99;
+    color: var(--white-color);
+}
+
+.recommend-btn-icon {
+    margin-right: 4px;
 }
 
 .recommend-video-content,

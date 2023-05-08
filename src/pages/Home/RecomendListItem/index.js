@@ -12,7 +12,7 @@ import {
     VolumeIcon,
     VolumeMutedIcon,
 } from '~/component/Icons';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Image from '~/component/Image';
 
@@ -20,7 +20,32 @@ const cx = classNames.bind(styles);
 
 function RecomendListItem({ data }) {
     const videoRef = useRef(null);
+    const [isPlaying, setIsplaying] = useState(false);
+    const [isVolumed, setIsvolumed] = useState(false);
     const [videoContainerRef, isInView] = useInView({ root: null, rootMargin: '20px', threshold: 0.7 });
+
+    const handelPlaying = () => {
+        if (isPlaying) {
+            setIsplaying(false);
+            videoRef.current.play();
+        } else {
+            setIsplaying(true);
+            videoRef.current.pause();
+        }
+    };
+
+    const handelVolumed = () => {
+        if (isVolumed) {
+            setIsvolumed(false);
+        } else {
+            setIsvolumed(true);
+        }
+    };
+
+    const handelVolumeProgress = (_value) => {
+        const _volume = _value / 100;
+        videoRef.current.volume = _volume;
+    };
 
     useEffect(() => {
         if (isInView) {
@@ -65,17 +90,37 @@ function RecomendListItem({ data }) {
                                     ref={videoRef}
                                     src={data.file_url}
                                     loop
-                                    muted
                                 ></video>
-                                <div className={cx('recommend-btn-toggle')}>
-                                    <FontAwesomeIcon className={cx('recommend-btn-play')} icon={faPlay} />
-                                    <FontAwesomeIcon className={cx('recommend-btn-pause')} icon={faPause} />
+                                <div className={cx('recommend-btn-toggle')} onClick={handelPlaying}>
+                                    {isPlaying ? (
+                                        <FontAwesomeIcon className={cx('recommend-btn-play')} icon={faPlay} />
+                                    ) : (
+                                        <FontAwesomeIcon className={cx('recommend-btn-pause')} icon={faPause} />
+                                    )}
                                 </div>
-                                <div className={cx('recommend-btn-voice')}>
-                                    <VolumeIcon className={cx('recommend-btn-volume')} />
-                                    <VolumeMutedIcon className={cx('recommend-btn-mute')} />
-                                    <input type="range" className={cx('recommend-btn-progress')} />
+                                <div className={cx('recommend-btn-voice')} onClick={handelVolumed}>
+                                    {isVolumed ? (
+                                        <VolumeIcon className={cx('recommend-btn-volume')} />
+                                    ) : (
+                                        <VolumeMutedIcon className={cx('recommend-btn-mute')} />
+                                    )}
                                 </div>
+                                <div className={cx('recommend-volume-control')}>
+                                    <div className={cx('recommend-volume-bar')}>
+                                        <input
+                                            className={cx('recommend-progress-bar')}
+                                            type="range"
+                                            onChange={(e) => {
+                                                handelVolumeProgress(e.target.value);
+                                            }}
+                                            min={0}
+                                            max={100}
+                                            step={1}
+                                        />
+                                        <div className={cx('recommend-progress-selector')}></div>
+                                    </div>
+                                </div>
+
                                 <div className={cx('recommend-btn-report')}>
                                     <FontAwesomeIcon className={cx('recommend-btn-icon')} icon={faFlagCheckered} />
                                     <p className={cx('recommend-btn-text')}>Report</p>

@@ -86,7 +86,7 @@ const MENU_PROFILES = [
 ];
 
 function Header() {
-    const currentUser = true;
+    const currentUser = false;
 
     const handelMenuChange = (menuItems) => {
         console.log(menuItems);
@@ -135,7 +135,7 @@ function Header() {
                         {currentUser ? (
                             <Image
                                 className={cx('user-avatar')}
-                                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/5587718fa97af29606494b3c577fbafb~c5_100x100.jpeg?x-expires=1683280800&x-signature=pKtUT2NiReROdpzJYtdmJZezrtw%3D"
+                                src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/5587718fa97af29606494b3c577fbafb~c5_100x100.jpeg?x-expires=1683280800&x-signature=pKtUT2NiReROdpzJYtdmJZezrtw%3"
                                 alt="Duyeennn"
                                 fallback="https://cdn.vectorstock.com/i/preview-1x/82/99/no-image-available-like-missing-picture-vector-43938299.jpg"
                             />

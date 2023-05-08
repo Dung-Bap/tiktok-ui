@@ -18,7 +18,7 @@ import * as request from '~/utils/request';
 //     }
 // };
 
-export const getVideoListForYou = async (type = 'for-you', page = 4) => {
+export const getVideoListForYou = async (type, page) => {
     try {
         const res = await request.get('videos', {
             params: {
