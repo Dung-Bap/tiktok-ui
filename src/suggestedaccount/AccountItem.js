@@ -7,6 +7,7 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import AccountPreview from './AccountPreview/AccountPreview';
 import Tippy from '@tippyjs/react/headless';
 import Image from '~/component/Image';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -21,7 +22,7 @@ function AccountItem({ data }) {
         );
     };
     return (
-        <div>
+        <Link to={`/@${data.nickname}`}>
             <Tippy appendTo={document.body} interactive placement="bottom" delay={[800, 0]} render={renderPreview}>
                 <div className={cx('account-item')}>
                     <Image className={cx('avatar')} alt="" src={data.avatar} />
@@ -32,7 +33,7 @@ function AccountItem({ data }) {
                     </div>
                 </div>
             </Tippy>
-        </div>
+        </Link>
     );
 }
 

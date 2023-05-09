@@ -15,6 +15,7 @@ import {
 import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Image from '~/component/Image';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
@@ -58,15 +59,25 @@ function RecomendListItem({ data }) {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('recommend-list')}>
-                <Image className={cx('recommend-img')} alt="" src={data.user.avatar} />
+                <Link to={`/@${data.user.nickname}`}>
+                    {' '}
+                    <Image className={cx('recommend-img')} alt="" src={data.user.avatar} />
+                </Link>
                 <div className={cx('recommend-container')}>
                     <div className={cx('recommend-content')}>
                         <div className={cx('recommend-title')}>
-                            <h3 className={cx('recommend-name')}>{`${data.user.first_name} ${data.user.last_name}`}</h3>
+                            <Link to={`/@${data.user.nickname}`}>
+                                <h3
+                                    className={cx('recommend-name')}
+                                >{`${data.user.first_name} ${data.user.last_name}`}</h3>
+                            </Link>
                             {data.user.tick && (
                                 <FontAwesomeIcon className={cx('recommend-tick')} icon={faCheckCircle} />
                             )}
-                            <h4 className={cx('recommend-nickname')}>{data.user.nickname}</h4>
+                            <Link to={`/@${data.user.nickname}`}>
+                                {' '}
+                                <h4 className={cx('recommend-nickname')}>{data.user.nickname}</h4>
+                            </Link>
                             <span className={cx('recommend-btn')}>
                                 <Button small outline>
                                     Follow

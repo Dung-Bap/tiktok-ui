@@ -20,9 +20,9 @@ function Home() {
     }, []);
 
     return (
-        <div>
+        <>
             <RecomendPreview data={recommendVideo} />
-        </div>
+        </>
     );
 }
 

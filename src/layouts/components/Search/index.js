@@ -48,6 +48,11 @@ function Search() {
         setSearchResults([]);
     };
 
+    const handelHideOnSearhResult = () => {
+        setShowSearchResult(false);
+        setSearchValue('');
+    };
+
     const handelHideSearhResult = () => {
         setShowSearchResult(false);
     };
@@ -65,7 +70,11 @@ function Search() {
                         <PopperWrapper>
                             <h4 className={cx('search-title')}> Accounts</h4>
                             {searchResults.map((result) => (
-                                <AccountItem key={result.id} data={result} />
+                                <AccountItem
+                                    key={result.id}
+                                    data={result}
+                                    handelHideOnSearhResult={handelHideOnSearhResult}
+                                />
                             ))}
                         </PopperWrapper>
                     </div>

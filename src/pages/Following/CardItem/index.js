@@ -5,12 +5,13 @@ import classNames from 'classnames/bind';
 import styles from './CardItem.module.scss';
 import Image from '~/component/Image';
 import Button from '~/component/Button';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
 function CardItem({ card }) {
     return (
-        <div className={cx('wrapper')}>
+        <Link to={`/@${card.nickname}`} className={cx('wrapper')}>
             <img className={cx('img_thumbnail')} alt="" src={card.popular_video.thumb_url} />
             <video loop muted className={cx('video')} src={card.popular_video.file_url} />
             <div className={cx('content')}>
@@ -25,7 +26,7 @@ function CardItem({ card }) {
                     Follow
                 </Button>
             </div>
-        </div>
+        </Link>
     );
 }
 

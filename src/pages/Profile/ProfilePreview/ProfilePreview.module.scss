@@ -1,0 +1,131 @@
+.wrapper {
+    position: relative;
+    width: 620px;
+    padding-right: 170px;
+    padding-bottom: 4px;
+    margin-bottom: 20px;
+}
+
+.header {
+    display: flex;
+    align-items: flex-start;
+}
+
+.img {
+    width: 116px;
+    height: 116px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.content {
+    text-align: left;
+}
+
+.name_profile {
+    display: flex;
+    align-items: baseline;
+}
+
+.name {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    margin-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    margin-right: 5px;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    color: rgb(32, 213, 236);
+}
+
+.nickname {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+    text-overflow: ellipsis;
+    height: 25px;
+    overflow: hidden;
+    max-width: 450px;
+    white-space: nowrap;
+    margin-bottom: 14px;
+}
+
+.button {
+    padding: 9px 79px;
+}
+
+.infor {
+    display: flex;
+    align-items: center;
+    margin-top: 22px;
+    color: rgba(18, 18, 18, 0.75);
+}
+
+.infor_profile {
+    margin-right: 20px;
+}
+
+.count {
+    font-weight: bold;
+    color: rgb(22, 24, 35);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.text {
+    margin-left: 6px;
+    color: rgba(22, 24, 35, 0.75);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    display: inline-block;
+    margin-left: 6px;
+}
+
+.des {
+    text-align: left;
+    color: rgba(22, 24, 35, 1);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    white-space: pre-line;
+    margin-top: 10px;
+}
+
+.share {
+    display: flex;
+    align-items: center;
+    padding-left: 2px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 600;
+}
+
+.share-icon-link {
+    width: 18px;
+    height: 18px;
+    margin-right: 2px;
+}
+
+.share-icon {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 52px;
+}
+
+.more-icon {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 11px;
+}
