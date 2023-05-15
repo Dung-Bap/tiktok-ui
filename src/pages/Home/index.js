@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import * as videoService from '~/services/videoService';
-import RecomendPreview from './RecomendPreview';
+import RecomendPreview from './RecomendPreview/RecomendPreview';
 
 function Home() {
     const [recommendVideo, setRecommendVideo] = useState([]);

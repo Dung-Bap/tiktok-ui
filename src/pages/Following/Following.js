@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import CardList from './CardList ';
+import CardList from './CardList /CardList';
 import * as usersService from '~/services/usersService';
 
 function Following() {

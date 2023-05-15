@@ -3,14 +3,17 @@ import ReactDOM from 'react-dom/client';
 import App from '~/App';
 import GlobalStyles from './component/GlobalStyles';
 import reportWebVitals from './reportWebVitals';
+import VideoContext from './context/VideoContext/VideoContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  // <React.StrictMode>
-    <GlobalStyles>
-      <App />
-    </GlobalStyles>
-  // </React.StrictMode>
+    // <React.StrictMode>
+    <VideoContext>
+        <GlobalStyles>
+            <App />
+        </GlobalStyles>
+    </VideoContext>,
+    // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

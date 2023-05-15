@@ -13,11 +13,15 @@ function Profile() {
     const location = useLocation();
     const locationProfile = location.pathname;
 
+    const [positionVideo, setPositionVideo] = useState(0);
+    const handelPlayVideo = (value) => {
+        setPositionVideo(value);
+    };
+
     useEffect(() => {
         const fetchApi = async () => {
             const result = await profileService.getProfile(locationProfile);
             setDataProfile(result);
-            console.log(result);
         };
         fetchApi();
     }, [locationProfile]);
@@ -41,7 +45,16 @@ function Profile() {
                             {dataProfile === null ? (
                                 <></>
                             ) : (
-                                dataProfile.videos.map((video, index) => <ProfileVideo key={index} data={video} />)
+                                dataProfile.videos.map((video, index) => (
+                                    <ProfileVideo
+                                        key={video.id}
+                                        data={video}
+                                        videoId={video.id}
+                                        index={index}
+                                        play={index === positionVideo}
+                                        handelPlayVideo={handelPlayVideo}
+                                    />
+                                ))
                             )}
                         </div>
                     </div>

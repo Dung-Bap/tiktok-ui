@@ -10,16 +10,16 @@
     border-bottom: 1px solid #e8e8e9;
 }
 
-.recommend-list {
+.list {
     display: flex;
 }
 
-.recommend-title {
+.title {
     display: flex;
     align-items: flex-end;
 }
 
-.recommend-name {
+.name {
     color: #000;
     font-weight: 700;
     font-size: 17px;
@@ -33,7 +33,7 @@
     }
 }
 
-.recommend-tick {
+.tick {
     width: 14px;
     height: 14px;
     color: rgb(32 213 236);
@@ -42,7 +42,7 @@
     margin-right: 5px;
 }
 
-.recommend-nickname {
+.nickname {
     color: #000;
     font-weight: 400;
     font-size: 14px;
@@ -51,18 +51,18 @@
     cursor: pointer;
 }
 
-.recommend-btn {
+.btn {
     right: 0;
     position: absolute;
     top: 28px;
 }
 
-.recommend-description {
+.description {
     display: block;
     max-width: 500px;
 }
 
-.recommend-music {
+.music {
     display: flex;
     align-items: center;
     margin: 4px 0 12px 0;
@@ -75,7 +75,7 @@
     }
 }
 
-.recommend-img {
+.img {
     margin-right: 12px;
     width: 56px;
     height: 56px;
@@ -88,11 +88,11 @@
     }
 }
 
-.recommend-video-wrapper {
+.video_wrapper {
     display: flex;
 }
 
-.recommend-video-container {
+.video_container {
     position: relative;
     height: calc(450px + (100vw - 768px) / 1152 * 200);
     position: relative;
@@ -105,17 +105,17 @@
     object-fit: cover;
 
     &:hover {
-        .recommend-btn-toggle,
-        .recommend-btn-voice {
+        .btn_toggle,
+        .btn_voice {
             display: block;
         }
-        .recommend-btn-report {
+        .btn_report {
             display: flex;
         }
     }
 }
 
-.recommend-btn-toggle {
+.btn_toggle {
     position: absolute;
     display: none;
     color: var(--white-color);
@@ -125,13 +125,13 @@
     left: 20px;
 }
 
-.recommend-btn-play,
-.recommend-btn-pause {
+.btn_play,
+.btn_pause {
     padding: 10px;
     height: 22px;
 }
 
-.recommend-volume-control {
+.volume_control {
     display: flex;
     align-items: center;
     opacity: 0;
@@ -152,7 +152,7 @@
     }
 }
 
-.recommend-volume-bar {
+.volume_bar {
     background-color: hsla(0, 0%, 100%, 0.341);
     border-radius: 5px;
     height: 2px;
@@ -160,7 +160,7 @@
     width: 45px;
 }
 
-.recommend-progress-bar {
+.progress_bar {
     -webkit-appearance: none;
     appearance: none;
     background-color: transparent;
@@ -182,7 +182,7 @@
     }
 }
 
-.recommend-progress-selector {
+.progress_selector {
     background-color: #fff;
     border-radius: 4px;
     bottom: 0;
@@ -191,7 +191,7 @@
     position: absolute;
 }
 
-.recommend-btn-voice {
+.btn_voice {
     position: absolute;
     display: none;
     content: '';
@@ -201,17 +201,17 @@
     right: 20px;
     padding: 10px;
     line-height: 0.2;
-    &:hover ~ .recommend-volume-control {
+    &:hover ~ .volume_control {
         opacity: 1;
     }
 }
 
-.recommend-btn-mute,
-.recommend-btn-volume {
+.btn_mute,
+.btn_volume {
     height: 22px;
 }
 
-.recommend-btn-report {
+.btn_report {
     position: absolute;
     display: none;
     align-items: center;
@@ -222,27 +222,27 @@
     color: var(--white-color);
 }
 
-.recommend-btn-icon {
+.btn_icon {
     margin-right: 4px;
 }
 
-.recommend-video-content,
-.recommend-video {
+.video_content,
+.video {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.recommend-btn-action {
+.btn_action {
     display: flex;
     flex-direction: column;
     justify-content: end;
     align-items: center;
 }
 
-.recommend-btn-like,
-.recommend-btn-message,
-.recommend-btn-share {
+.btn_like,
+.btn_message,
+.btn_share {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -258,7 +258,7 @@
     }
 }
 
-.recommend-btn-count {
+.btn_count {
     color: rgba(22, 24, 35, 0.75);
     font-size: 12px;
     line-height: 17px;
