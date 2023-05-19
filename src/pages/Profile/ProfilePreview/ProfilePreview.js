@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import styles from './ProfilePreview.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-import Button from '~/component/Button';
+import Button from '~/component/Button/Button';
 import { MoreIcon, ShareIcon, ShareLinkIcon } from '~/component/Icons';
 import Image from '~/component/Image';
 

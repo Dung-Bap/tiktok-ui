@@ -7,24 +7,33 @@ import config from '~/config';
 import { HomeIcon, HomeIconActive, LiveIcon, LiveIconActive, UserIcon, UserIconActive } from '~/component/Icons';
 import SuggestedAccount from '~/suggestedaccount/SuggestedAccount';
 import * as usersService from '~/services/usersService';
+import Button from '~/component/Button/Button';
 
 const cx = classNames.bind(styles);
 
 function Sidebar() {
     const [suggestedUsers, setSuggestedUsers] = useState([]);
-    const PERPAGE = 5;
+    const [perpage, setPerpage] = useState(5);
     const PAGE = Math.floor(Math.random() * 15 + 1);
 
     useEffect(() => {
         usersService
-            .getSuggested(PAGE, PERPAGE)
+            .getSuggested(PAGE, perpage)
             .then((data) => {
                 setSuggestedUsers(data);
             })
             .catch((error) => {
                 console.log(error);
             });
-    }, []);
+    }, [perpage]);
+
+    const handleMoreBtn = () => {
+        if (perpage == 5) {
+            setPerpage(15);
+        } else {
+            setPerpage(5);
+        }
+    };
 
     return (
         <aside className={cx('wrapper')}>
@@ -38,7 +47,18 @@ function Sidebar() {
                 />
                 <MenuItem to={config.routes.live} icon={<LiveIcon />} iconActive={<LiveIconActive />} title="LIVE" />
             </Menu>
-            <SuggestedAccount label={'Suggested accounts'} data={suggestedUsers} />
+            <div className={cx('login')}>
+                <p className={cx('text')}>Log in to follow creators, like videos, and view comments.</p>
+                <Button className={cx('button')} outline>
+                    Log in
+                </Button>
+            </div>
+            <SuggestedAccount
+                label={'Suggested accounts'}
+                data={suggestedUsers}
+                perpage={perpage}
+                onMoreBtn={handleMoreBtn}
+            />
         </aside>
     );
 }

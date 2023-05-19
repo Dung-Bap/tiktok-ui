@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 import images from '~/assets/images';
 import styles from './Header.module.scss';
-import Button from '~/component/Button';
+import Button from '~/component/Button/Button';
 import Menu from '../Popper/Menu';
 
 import {

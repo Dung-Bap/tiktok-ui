@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import styles from './CardItem.module.scss';
 import Image from '~/component/Image';
-import Button from '~/component/Button';
+import Button from '~/component/Button/Button';
 
 const cx = classNames.bind(styles);
 
@@ -20,6 +20,10 @@ function CardItem({ card, index, play = false, handelPlayVideo }) {
               }, 150)
             : videoRef.current.load();
     }, [play]);
+
+    const handleClickFollow = (e) => {
+        e.preventDefault();
+    };
 
     return (
         <Link to={`/@${card.nickname}`} className={cx('wrapper')} onMouseOver={() => handelPlayVideo(index)}>
@@ -39,7 +43,7 @@ function CardItem({ card, index, play = false, handelPlayVideo }) {
                     {card.tick && <FontAwesomeIcon className={cx('tick')} icon={faCheckCircle} />}
                 </h6>
 
-                <Button className={cx('button')} primary={true}>
+                <Button onClick={handleClickFollow} className={cx('button')} primary={true}>
                     Follow
                 </Button>
             </div>

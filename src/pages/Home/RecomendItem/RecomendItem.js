@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle, faFlagCheckered, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState, useContext } from 'react';
 import { useInView } from 'react-intersection-observer';
@@ -7,8 +7,9 @@ import { videoEnvironment } from '~/context/VideoContext/VideoContext';
 
 import styles from './RecomendItem.module.scss';
 import classNames from 'classnames/bind';
-import Button from '~/component/Button';
+import Button from '~/component/Button/Button';
 import {
+    FlagIcon,
     HashTagMusicIcon,
     HeartIcon,
     MessageVideoIcon,
@@ -24,9 +25,15 @@ function RecomendItem({ data, videoId }) {
     const contextVideo = useContext(videoEnvironment);
 
     const videoRef = useRef(null);
-    const [isPlaying, setIsplaying] = useState(false);
-    const [isVolumed, setIsvolumed] = useState(false);
+    const selectorRef = useRef();
+
     const [videoContainerRef, isInView] = useInView({ root: null, rootMargin: '20px', threshold: 0.7 });
+    const [isPlaying, setIsplaying] = useState(false);
+    const [valueProgress, setValueProgress] = useState(20);
+    const [isVolumed, setIsvolumed] = useState(false);
+    const [mute, setMute] = useState(true);
+    const volumeVideo = 'volumeVideo';
+    const getVolumeVideo = JSON.parse(localStorage.getItem(volumeVideo));
 
     const handelClickVideo = () => {
         contextVideo.handelGetVideoId(videoId);
@@ -34,33 +41,52 @@ function RecomendItem({ data, videoId }) {
 
     const handelPlaying = () => {
         if (isPlaying) {
-            setIsplaying(false);
             videoRef.current.play();
         } else {
-            setIsplaying(true);
             videoRef.current.pause();
         }
+        setIsplaying((prev) => !prev);
     };
 
     const handelVolumed = () => {
-        if (isVolumed) {
-            setIsvolumed(false);
+        setIsvolumed((prev) => !prev);
+        setMute(!mute);
+        if (!mute) {
+            setValueProgress(0);
+            selectorRef.current.style.width = 0;
         } else {
-            setIsvolumed(true);
+            selectorRef.current.style.width = `${getVolumeVideo * 100}%`;
+            setValueProgress(getVolumeVideo * 100);
         }
     };
 
     const handelVolumeProgress = (_value) => {
         const _volume = _value / 100;
+
+        if (_value <= 0) {
+            setIsvolumed(false);
+        } else {
+            setIsvolumed(true);
+        }
+
+        setValueProgress(_value);
         videoRef.current.volume = _volume;
+        selectorRef.current.style.width = `${_volume * 100}%`;
+
+        localStorage.setItem(volumeVideo, JSON.stringify(_volume));
     };
 
     useEffect(() => {
         if (isInView) {
             videoRef.current.play();
+            videoRef.current.volume = contextVideo.volumeDefault;
+            selectorRef.current.style.width = `${contextVideo.volumeDefault * 100}%`;
+            setValueProgress(getVolumeVideo * 100);
         } else {
-            videoRef.current.pause();
+            videoRef.current.load();
+            contextVideo.handelSetVolumeDefault(getVolumeVideo);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isInView]);
 
     return (
@@ -106,6 +132,7 @@ function RecomendItem({ data, videoId }) {
                                         src={data.file_url}
                                         loop
                                         onClick={handelClickVideo}
+                                        muted={mute}
                                     ></video>
                                 </Link>
                                 <div className={cx('btn_toggle')} onClick={handelPlaying}>
@@ -133,13 +160,15 @@ function RecomendItem({ data, videoId }) {
                                             min={0}
                                             max={100}
                                             step={1}
+                                            value={valueProgress}
                                         />
-                                        <div className={cx('progress_selector')}></div>
+                                        <div className={cx('progress_selector')} ref={selectorRef}></div>
                                     </div>
                                 </div>
 
                                 <div className={cx('btn_report')}>
-                                    <FontAwesomeIcon className={cx('btn_icon')} icon={faFlagCheckered} />
+                                    <FlagIcon className={cx('btn_icon')} />
+                                    {/* <FontAwesomeIcon className={cx('btn_icon')} icon={faFlagCheckered} /> */}
                                     <p className={cx('btn_text')}>Report</p>
                                 </div>
                             </div>

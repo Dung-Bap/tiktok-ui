@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './AccountPreview.module.scss';
-import Button from '~/component/Button';
+import Button from '~/component/Button/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import Image from '~/component/Image';

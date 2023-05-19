@@ -6,10 +6,9 @@
     padding: 20px 8px 26px 8px;
     background: rgb(255 255 255);
     overflow-x: hidden;
-
     &::-webkit-scrollbar {
         background-color: transparent;
-        width: 0px;
+        width: 0;
     }
 
     &:hover {
@@ -26,4 +25,20 @@
             background-color: rgba(0, 0, 0, 0);
         }
     }
+}
+
+.login {
+    padding: 20px 8px 24px;
+    border-top: 1px solid #e3e3e4;
+}
+
+.text {
+    color: rgba(22, 24, 35, 0.5);
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.button {
+    margin: 20px 0 0;
+    padding: 14px 77px;
 }

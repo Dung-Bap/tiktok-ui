@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -26,26 +26,31 @@ import {
     TwitterIcon,
     WhatsAppIcon,
 } from '~/component/Icons';
-import Button from '~/component/Button';
+import Button from '~/component/Button/Button';
 import { MessageVideoIcon } from '~/component/Icons';
 import * as videoService from '~/services/videoService';
-import { videoEnvironment } from '~/context/VideoContext/VideoContext';
 import config from '~/config';
 
 const cx = classNames.bind(styles);
 
 function VideoDetail() {
+    const navigate = useNavigate();
+
     const [videoDetail, setVideoDetail] = useState({});
-    const contextVideo = useContext(videoEnvironment);
+    const { videoId } = useParams();
 
     useEffect(() => {
         const fetchApi = async () => {
-            const result = await videoService.getVideo(contextVideo.videoId);
+            const result = await videoService.getVideo(videoId);
             setVideoDetail(result);
         };
 
         fetchApi();
     }, []);
+
+    const handleGoback = () => {
+        navigate(-1);
+    };
 
     return (
         <div className={cx('wrapper')}>
@@ -54,7 +59,7 @@ function VideoDetail() {
                 <div className={cx('wrapper_video')}>
                     <video className={cx('video')} src={videoDetail?.file_url} autoPlay muted loop />
                 </div>
-                <FontAwesomeIcon className={cx('close_icon')} icon={faClose} />
+                <FontAwesomeIcon onClick={handleGoback} className={cx('close_icon')} icon={faClose} />
                 <Link to={config.routes.home}>
                     <LogoCricleIcon className={cx('logo')} />
                 </Link>
