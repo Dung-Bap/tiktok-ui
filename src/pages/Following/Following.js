@@ -5,7 +5,7 @@ import * as usersService from '~/services/usersService';
 function Following() {
     const [suggestedFollowers, setSuggestedFollowers] = useState([]);
     const PERPAGE = 15;
-    const PAGE = Math.floor(Math.random() * 15 + 1);
+    const PAGE = Math.floor(Math.random() * 14 + 1);
     useEffect(() => {
         usersService
             .getSuggested(PAGE, PERPAGE)
@@ -15,6 +15,7 @@ function Following() {
             .catch((err) => {
                 console.log(err);
             });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return <CardList data={suggestedFollowers} />;

@@ -12,7 +12,7 @@ function SuggestedAccount({ label, data = [], perpage, onMoreBtn }) {
                 <AccountItem key={account.id} data={account} />
             ))}
             <p onClick={onMoreBtn} className={cx('more-btn')}>
-                {perpage == 5 ? 'See all' : 'See less'}
+                {perpage === 5 ? 'See all' : 'See less'}
             </p>
         </div>
     );

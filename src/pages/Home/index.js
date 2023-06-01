@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import * as videoService from '~/services/videoService';
 import RecomendPreview from './RecomendPreview/RecomendPreview';
@@ -18,6 +18,7 @@ function Home() {
             .catch((err) => {
                 console.log(err);
             });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [callApi]);
 
     const debounce = (func, delay) => {
@@ -52,6 +53,7 @@ function Home() {
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

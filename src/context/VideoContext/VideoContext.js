@@ -3,22 +3,23 @@ import { createContext, useState } from 'react';
 export const videoEnvironment = createContext();
 
 function VideoContext({ children }) {
-    const [volumeDefault, setVolumeDefault] = useState(0.2);
     const [videoId, setVideoId] = useState(0);
-
-    const handelSetVolumeDefault = (value) => {
-        setVolumeDefault(value);
-    };
+    const [isVolumed, setIsvolumed] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [valueProgress, setValueProgress] = useState(0);
 
     const handelGetVideoId = (id) => {
         setVideoId(id);
     };
-
     const value = {
+        isVolumed,
+        isPlaying,
         videoId,
-        volumeDefault,
+        valueProgress,
         handelGetVideoId,
-        handelSetVolumeDefault,
+        setIsvolumed,
+        setIsPlaying,
+        setValueProgress,
     };
 
     return <videoEnvironment.Provider value={value}>{children}</videoEnvironment.Provider>;

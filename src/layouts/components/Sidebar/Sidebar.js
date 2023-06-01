@@ -14,7 +14,7 @@ const cx = classNames.bind(styles);
 function Sidebar() {
     const [suggestedUsers, setSuggestedUsers] = useState([]);
     const [perpage, setPerpage] = useState(5);
-    const PAGE = Math.floor(Math.random() * 15 + 1);
+    const PAGE = Math.floor(Math.random() * 12 + 1);
 
     useEffect(() => {
         usersService
@@ -25,10 +25,11 @@ function Sidebar() {
             .catch((error) => {
                 console.log(error);
             });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [perpage]);
 
     const handleMoreBtn = () => {
-        if (perpage == 5) {
+        if (perpage === 5) {
             setPerpage(15);
         } else {
             setPerpage(5);

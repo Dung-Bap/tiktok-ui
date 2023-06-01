@@ -23,68 +23,60 @@ const cx = classNames.bind(styles);
 
 function RecomendItem({ data, videoId }) {
     const contextVideo = useContext(videoEnvironment);
-
+    const [videoContainerRef, isInView] = useInView({ root: null, rootMargin: '20px', threshold: 1.0 });
     const videoRef = useRef(null);
     const selectorRef = useRef();
-
-    const [videoContainerRef, isInView] = useInView({ root: null, rootMargin: '20px', threshold: 0.7 });
-    const [isPlaying, setIsplaying] = useState(false);
-    const [valueProgress, setValueProgress] = useState(20);
-    const [isVolumed, setIsvolumed] = useState(false);
     const [mute, setMute] = useState(true);
-    const volumeVideo = 'volumeVideo';
-    const getVolumeVideo = JSON.parse(localStorage.getItem(volumeVideo));
+    const getVolume = JSON.parse(localStorage.getItem('_volume'));
 
+    const currentVolume = contextVideo.valueProgress / 100;
     const handelClickVideo = () => {
         contextVideo.handelGetVideoId(videoId);
     };
 
-    const handelPlaying = () => {
-        if (isPlaying) {
+    const handlePlayBtn = () => {
+        if (contextVideo.isPlaying) {
             videoRef.current.play();
         } else {
             videoRef.current.pause();
         }
-        setIsplaying((prev) => !prev);
+        contextVideo.setIsPlaying(!contextVideo.isPlaying);
     };
 
-    const handelVolumed = () => {
-        setIsvolumed((prev) => !prev);
-        setMute(!mute);
-        if (!mute) {
-            setValueProgress(0);
+    const handleVolumeBtn = () => {
+        contextVideo.setIsvolumed(!contextVideo.isVolumed);
+        if (contextVideo.isVolumed) {
+            contextVideo.setValueProgress(0);
             selectorRef.current.style.width = 0;
         } else {
-            selectorRef.current.style.width = `${getVolumeVideo * 100}%`;
-            setValueProgress(getVolumeVideo * 100);
+            // Logic vẫn chạy mà nhìn tều thật sự !!!
+            selectorRef.current.style.width = `${getVolume === 0 || getVolume === null ? 0.6 * 100 : getVolume * 100}%`;
+            contextVideo.setValueProgress(getVolume === 0 || getVolume === null ? 0.6 * 100 : getVolume * 100);
         }
     };
 
-    const handelVolumeProgress = (_value) => {
-        const _volume = _value / 100;
-
-        if (_value <= 0) {
-            setIsvolumed(false);
-        } else {
-            setIsvolumed(true);
-        }
-
-        setValueProgress(_value);
-        videoRef.current.volume = _volume;
-        selectorRef.current.style.width = `${_volume * 100}%`;
-
-        localStorage.setItem(volumeVideo, JSON.stringify(_volume));
+    const handleValueProgress = (value) => {
+        const _volume = value / 100;
+        contextVideo.setValueProgress(value);
+        localStorage.setItem('_volume', JSON.stringify(_volume));
     };
+
+    useEffect(() => {
+        contextVideo.setIsvolumed(currentVolume !== 0);
+        videoRef.current.volume = currentVolume;
+        selectorRef.current.style.width = `${currentVolume * 100}%`;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentVolume]);
 
     useEffect(() => {
         if (isInView) {
             videoRef.current.play();
-            videoRef.current.volume = contextVideo.volumeDefault;
-            selectorRef.current.style.width = `${contextVideo.volumeDefault * 100}%`;
-            setValueProgress(getVolumeVideo * 100);
+            videoRef.current.volume = currentVolume;
+            selectorRef.current.style.width = `${currentVolume * 100}%`;
+            setMute(false);
         } else {
             videoRef.current.load();
-            contextVideo.handelSetVolumeDefault(getVolumeVideo);
+            contextVideo.setIsPlaying(false);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isInView]);
@@ -135,15 +127,15 @@ function RecomendItem({ data, videoId }) {
                                         muted={mute}
                                     ></video>
                                 </Link>
-                                <div className={cx('btn_toggle')} onClick={handelPlaying}>
-                                    {isPlaying ? (
+                                <div className={cx('btn_toggle')} onClick={handlePlayBtn}>
+                                    {contextVideo.isPlaying ? (
                                         <FontAwesomeIcon className={cx('btn_play')} icon={faPlay} />
                                     ) : (
                                         <FontAwesomeIcon className={cx('btn_pause')} icon={faPause} />
                                     )}
                                 </div>
-                                <div className={cx('btn_voice')} onClick={handelVolumed}>
-                                    {isVolumed ? (
+                                <div className={cx('btn_voice')} onClick={handleVolumeBtn}>
+                                    {contextVideo.isVolumed ? (
                                         <VolumeIcon className={cx('btn_volume')} />
                                     ) : (
                                         <VolumeMutedIcon className={cx('btn_mute')} />
@@ -152,15 +144,13 @@ function RecomendItem({ data, videoId }) {
                                 <div className={cx('volume_control')}>
                                     <div className={cx('volume_bar')}>
                                         <input
+                                            value={contextVideo.valueProgress}
+                                            onChange={(e) => handleValueProgress(e.target.value)}
                                             className={cx('progress_bar')}
                                             type="range"
-                                            onChange={(e) => {
-                                                handelVolumeProgress(e.target.value);
-                                            }}
                                             min={0}
                                             max={100}
                                             step={1}
-                                            value={valueProgress}
                                         />
                                         <div className={cx('progress_selector')} ref={selectorRef}></div>
                                     </div>

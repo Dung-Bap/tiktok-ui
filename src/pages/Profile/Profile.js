@@ -22,6 +22,7 @@ function Profile() {
         const fetchApi = async () => {
             const result = await profileService.getProfile(locationProfile);
             setDataProfile(result);
+            console.log('ProfileVideo', result);
         };
         fetchApi();
     }, [locationProfile]);
