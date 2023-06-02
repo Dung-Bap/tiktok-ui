@@ -4,27 +4,35 @@ import ProfilePreview from './ProfilePreview/ProfilePreview';
 import { KeyIcon } from '~/component/Icons';
 import { useLocation } from 'react-router-dom';
 import * as profileService from '~/services/profileService';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ProfileVideo from './ProfileVideo/ProfileVideo';
+import { videoEnvironment } from '~/context/VideoContext/VideoContext';
 const cx = classNames.bind(styles);
 
 function Profile() {
+    const contextVideo = useContext(videoEnvironment);
+
     const [dataProfile, setDataProfile] = useState(null);
     const location = useLocation();
     const locationProfile = location.pathname;
 
-    const [positionVideo, setPositionVideo] = useState(0);
+    const [positionPlay, setPositionPlay] = useState(0);
     const handelPlayVideo = (value) => {
-        setPositionVideo(value);
+        setPositionPlay(value);
     };
+
+    useEffect(() => {
+        contextVideo.handleSetPositionVideo(positionPlay);
+    }, [contextVideo, positionPlay]);
 
     useEffect(() => {
         const fetchApi = async () => {
             const result = await profileService.getProfile(locationProfile);
             setDataProfile(result);
-            console.log('ProfileVideo', result);
+            contextVideo.handleSetListVideo(result?.videos);
         };
         fetchApi();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [locationProfile]);
 
     return (
@@ -52,7 +60,7 @@ function Profile() {
                                         data={video}
                                         videoId={video.id}
                                         index={index}
-                                        play={index === positionVideo}
+                                        play={index === positionPlay}
                                         handelPlayVideo={handelPlayVideo}
                                     />
                                 ))

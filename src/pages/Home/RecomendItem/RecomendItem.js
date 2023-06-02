@@ -30,9 +30,6 @@ function RecomendItem({ data, videoId }) {
     const getVolume = JSON.parse(localStorage.getItem('_volume'));
 
     const currentVolume = contextVideo.valueProgress / 100;
-    const handelClickVideo = () => {
-        contextVideo.handelGetVideoId(videoId);
-    };
 
     const handlePlayBtn = () => {
         if (contextVideo.isPlaying) {
@@ -49,7 +46,7 @@ function RecomendItem({ data, videoId }) {
             contextVideo.setValueProgress(0);
             selectorRef.current.style.width = 0;
         } else {
-            // Logic vẫn chạy mà nhìn tều thật sự !!!
+            // Logic vẫn chạy mà nhìn tều thật sự
             selectorRef.current.style.width = `${getVolume === 0 || getVolume === null ? 0.6 * 100 : getVolume * 100}%`;
             contextVideo.setValueProgress(getVolume === 0 || getVolume === null ? 0.6 * 100 : getVolume * 100);
         }
@@ -123,7 +120,7 @@ function RecomendItem({ data, videoId }) {
                                         ref={videoRef}
                                         src={data.file_url}
                                         loop
-                                        onClick={handelClickVideo}
+                                        onClick={() => contextVideo.handelGetVideoId(videoId)}
                                         muted={mute}
                                     ></video>
                                 </Link>

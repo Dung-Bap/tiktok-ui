@@ -12,9 +12,6 @@ function ProfileVideo({ data, videoId, handelPlayVideo, index, play = false }) {
     const getProfileId = location.pathname;
 
     const videoContext = useContext(videoEnvironment);
-    const handelVideoClick = (id) => {
-        videoContext.handelGetVideoId(id);
-    };
     const videoRef = useRef();
     useEffect(() => {
         play
@@ -26,12 +23,12 @@ function ProfileVideo({ data, videoId, handelPlayVideo, index, play = false }) {
 
     return (
         <Link
-            to={`${getProfileId}/video/${videoId}`}
+            to={`${getProfileId}/video/${videoContext.videoId}`}
             className={cx('wrapper')}
             onMouseOver={() => {
                 handelPlayVideo(index);
             }}
-            onClick={() => handelVideoClick(videoId)}
+            onClick={() => videoContext.handelGetVideoId(videoId)}
         >
             {/* <Image className={cx('img')} alt={''} src={data.thumb_url} /> */}
             <video muted loop ref={videoRef} className={cx('video', { active: play })} src={data.file_url} />

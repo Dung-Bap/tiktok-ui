@@ -43,16 +43,6 @@ function VideoDetail() {
     const videoRef = useRef();
     const selectorRef = useRef();
 
-    useEffect(() => {
-        const fetchApi = async () => {
-            const result = await videoService.getVideo(videoId);
-            setVideoDetail(result);
-            console.log('VideoDetail', result);
-        };
-        fetchApi();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
     const handleGoback = () => {
         navigate(-1);
     };
@@ -91,6 +81,10 @@ function VideoDetail() {
     };
 
     useEffect(() => {
+        window.history.replaceState(null, '', `${`/@${contextVideo.nickName}`}/video/${contextVideo.videoId}`);
+    }, [contextVideo.nickName, contextVideo.videoId]);
+
+    useEffect(() => {
         contextVideo.setIsvolumed(currentVolume !== 0);
         videoRef.current.volume = currentVolume;
         selectorRef.current.style.width = `${currentVolume * 100}%`;
@@ -109,6 +103,15 @@ function VideoDetail() {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isInView]);
+
+    useEffect(() => {
+        const fetchApi = async () => {
+            const result = await videoService.getVideo(contextVideo.videoId || videoId);
+            setVideoDetail(result);
+        };
+        fetchApi();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [contextVideo.videoId]);
 
     return (
         <div className={cx('wrapper')}>
@@ -133,8 +136,20 @@ function VideoDetail() {
                     <span className={cx('report_text')}>Report</span>
                 </div>
                 {contextVideo.isPlaying && <FontAwesomeIcon className={cx('play_btn')} icon={faPlay} />}
-                <FontAwesomeIcon className={cx('next_btn')} icon={faChevronUp} />
-                <FontAwesomeIcon className={cx('prev_btn')} icon={faChevronDown} />
+                {/* sai tên class btn ahihi */}
+                <FontAwesomeIcon
+                    className={cx('next_btn', contextVideo.positionVideo === 0 ? 'none' : '')}
+                    onClick={contextVideo.handlePrevVideo}
+                    icon={faChevronUp}
+                />
+                <FontAwesomeIcon
+                    className={cx(
+                        'prev_btn',
+                        contextVideo.positionVideo === contextVideo.listVideo.length - 1 ? 'none' : '',
+                    )}
+                    icon={faChevronDown}
+                    onClick={contextVideo.handleNextVideo}
+                />
                 <div className={cx('volume_control')}>
                     <div className={cx('volume_bar')} onClick={handlePropagation}>
                         <input
@@ -163,12 +178,12 @@ function VideoDetail() {
                         <div className={cx('user_wrapper')}>
                             <Image className={cx('user_img')} alt="" src={videoDetail?.user?.avatar} />
                             <div className={cx('user_container')}>
-                                <span className={cx('nickname')}>{videoDetail?.user?.nickname}</span>
+                                <span
+                                    className={cx('nickname')}
+                                >{`${videoDetail?.user?.first_name} ${videoDetail?.user?.last_name}`}</span>
                                 <FontAwesomeIcon className={cx('tick')} icon={faCheckCircle} />
                                 <div className={cx('content')}>
-                                    <span
-                                        className={cx('name')}
-                                    >{`${videoDetail?.user?.first_name} ${videoDetail?.user?.last_name}`}</span>
+                                    <span className={cx('name')}>{videoDetail?.user?.nickname}</span>
                                     <span className={cx('history')}>{videoDetail?.published_at}</span>
                                 </div>
                             </div>

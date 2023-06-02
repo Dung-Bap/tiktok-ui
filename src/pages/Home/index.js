@@ -6,7 +6,7 @@ import RecomendPreview from './RecomendPreview/RecomendPreview';
 function Home() {
     const [recommendVideo, setRecommendVideo] = useState([]);
     const TYPE = 'for-you';
-    const PAGE = Math.floor(Math.random() * 15 + 1);
+    const PAGE = Math.floor(Math.random() * 29 + 1);
     const [callApi, setCallApi] = useState(false);
 
     useEffect(() => {
