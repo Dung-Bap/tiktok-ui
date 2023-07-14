@@ -4,8 +4,8 @@
     --primary-color: rgb(254 44 85);
     --default-layout-header-height: 60px;
     // --default-layout-width: 1150px;
-    --black: #000;
-    --white-color: #fff;
+    --black-color: rgb(22, 24, 35);
+    --white-color: rgb(255, 255, 255);
     --text-color: rgb(22, 24, 35);
     --second-color: rgb(138 139 144);
     --font-family: 'ProximaNova', sans-serif;
@@ -95,5 +95,47 @@ body {
 
     .tippt-content {
         padding: 8px 9px;
+    }
+}
+
+.loader {
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+
+.loader::after,
+.loader::before {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    mix-blend-mode: multiply;
+    animation: rotate 1s infinite cubic-bezier(0.05, 0, 1, 1);
+}
+
+.loader::before {
+    background-color: #fe2c55;
+}
+
+.loader::after {
+    background-color: rgb(58, 242, 255);
+    animation-delay: 0.5s;
+}
+
+@keyframes rotate {
+    0%,
+    100% {
+        left: 18px;
+    }
+    25% {
+        transform: scale(0.3);
+    }
+    50% {
+        left: 0;
+    }
+    75% {
+        transform: scale(1);
     }
 }

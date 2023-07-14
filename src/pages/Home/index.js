@@ -48,7 +48,7 @@ function Home() {
             setCallApi((pre) => !pre);
         } else {
         }
-    }, 200);
+    }, 300);
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);

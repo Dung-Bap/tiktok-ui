@@ -1,0 +1,171 @@
+.background {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.wrapper {
+    position: relative;
+    width: 483px;
+    padding: 48px 0 0;
+    border-radius: 8px;
+    max-height: 693px;
+    height: 80%;
+    overflow: hidden;
+    background-color: var(--white-color);
+    animation: fadeIn 0.4s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        scale: 0;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.hide {
+    animation: fadeOut 0.4s;
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        scale: 1;
+    }
+    to {
+        opacity: 0;
+        scale: 0;
+    }
+}
+
+.close_btn {
+    position: absolute;
+    top: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    right: 18px;
+    width: 24px;
+    height: 24px;
+    background: rgba(22, 24, 35, 0.03);
+    padding: 8px;
+}
+
+.login_container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: auto;
+    max-height: 455px;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 375px;
+}
+
+.header {
+    width: 100%;
+    color: var(--black-color);
+    font-family: SofiaPro, Arial, Tahoma, PingFangSC, sans-serif;
+    font-size: 32px;
+    margin: 16px auto;
+    font-weight: bold;
+    text-align: center;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    color: var(--black-color);
+    font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 600;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    font-size: 15px;
+    border-radius: 0px;
+    padding: 0px 12px;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    min-height: 44px;
+    cursor: pointer;
+    margin-bottom: 16px;
+    word-break: keep-all;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.icon {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 20px;
+    line-height: 100%;
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.policy {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    background: rgb(255, 255, 255);
+    border-bottom: 1px solid rgba(22, 24, 35, 0.12);
+    border-top-color: rgba(22, 24, 35, 0.12);
+    border-right-color: rgba(22, 24, 35, 0.12);
+    border-left-color: rgba(22, 24, 35, 0.12);
+    padding: 16px 50px;
+    margin-bottom: unset;
+    color: rgba(22, 24, 35, 0.5);
+    font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+}
+
+.text {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+}
+
+.btn {
+    margin-left: 5px;
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 18px;
+    color: rgb(254, 44, 85);
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

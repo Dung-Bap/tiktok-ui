@@ -1,91 +1,26 @@
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { faPlus, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 
 import images from '~/assets/images';
 import styles from './Header.module.scss';
 import Button from '~/component/Button/Button';
 import Menu from '../Popper/Menu';
-
-import {
-    CoinIcon,
-    DarkmodeIcon,
-    FeedbackIcon,
-    InboxIcon,
-    KeyboardIcon,
-    LanguageIcon,
-    LogoutIcon,
-    MessageIcon,
-    ProfileIcon,
-    SettingIcon,
-} from '~/component/Icons';
 import Search from '../Search';
 import config from '~/config';
 import Image from '~/component/Image';
+import { InboxIcon, MessageIcon } from '~/component/Icons';
+import { modalEnvironment } from '~/context/ModalContext/ModalContext';
+import { MENU_ITEMS, MENU_PROFILES } from '~/component/Variable/Variable';
 
 const cx = classNames.bind(styles);
-const MENU_ITEMS = [
-    {
-        icon: <LanguageIcon />,
-        title: 'English',
-        children: {
-            title: 'Language',
-            data: [
-                {
-                    code: 'en',
-                    title: 'English',
-                },
-                {
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-            ],
-        },
-    },
-    {
-        icon: <FeedbackIcon />,
-        title: 'Feedback and help',
-        to: '/feedback',
-    },
-    {
-        icon: <KeyboardIcon />,
-        title: 'Keyboard shortcuts',
-    },
-    {
-        icon: <DarkmodeIcon />,
-        title: 'Dark mode',
-    },
-];
-
-const MENU_PROFILES = [
-    {
-        icon: <ProfileIcon />,
-        title: 'View profiles',
-        to: '/users',
-    },
-    {
-        icon: <CoinIcon />,
-        title: 'Get coins',
-        to: '/coins',
-    },
-    {
-        icon: <SettingIcon />,
-        title: 'Settings',
-        to: '/Settings',
-    },
-    ...MENU_ITEMS,
-    {
-        icon: <LogoutIcon />,
-        title: 'Log out',
-        to: '/logout',
-        separate: true,
-    },
-];
 
 function Header() {
+    const modalContext = useContext(modalEnvironment);
     const currentUser = false;
 
     const handelMenuChange = (menuItems) => {
@@ -124,11 +59,17 @@ function Header() {
                         </>
                     ) : (
                         <>
-                            <Button text leftIcon={<FontAwesomeIcon icon={faPlus} />}>
+                            <Button
+                                onClick={modalContext.handleShowModal}
+                                text
+                                leftIcon={<FontAwesomeIcon icon={faPlus} />}
+                            >
                                 {' '}
                                 Upload
                             </Button>
-                            <Button primary> Log in</Button>
+                            <Button primary onClick={modalContext.handleShowModal}>
+                                Log in
+                            </Button>
                         </>
                     )}
                     <Menu items={currentUser ? MENU_PROFILES : MENU_ITEMS} onChange={handelMenuChange}>

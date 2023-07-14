@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 import styles from './Sidebar.module.scss';
 import classNames from 'classnames/bind';
@@ -8,6 +8,7 @@ import { HomeIcon, HomeIconActive, LiveIcon, LiveIconActive, UserIcon, UserIconA
 import SuggestedAccount from '~/suggestedaccount/SuggestedAccount';
 import * as usersService from '~/services/usersService';
 import Button from '~/component/Button/Button';
+import { modalEnvironment } from '~/context/ModalContext/ModalContext';
 
 const cx = classNames.bind(styles);
 
@@ -15,6 +16,8 @@ function Sidebar() {
     const [suggestedUsers, setSuggestedUsers] = useState([]);
     const [perpage, setPerpage] = useState(5);
     const PAGE = Math.floor(Math.random() * 12 + 1);
+
+    const { handleShowModal } = useContext(modalEnvironment);
 
     useEffect(() => {
         usersService
@@ -50,7 +53,7 @@ function Sidebar() {
             </Menu>
             <div className={cx('login')}>
                 <p className={cx('text')}>Log in to follow creators, like videos, and view comments.</p>
-                <Button className={cx('button')} outline>
+                <Button onClick={handleShowModal} className={cx('button')} outline>
                     Log in
                 </Button>
             </div>

@@ -9,15 +9,6 @@ export const getVideo = async (id) => {
     }
 };
 
-// export const deleteVideo = async (videoID) => {
-//     try {
-//         const res = await request.deleteMethod(`videos/${videoID}`);
-//         return res.data;
-//     } catch (error) {
-//         console.log(error);
-//     }
-// };
-
 export const getVideoListForYou = async (type, page) => {
     try {
         const res = await request.get('videos', {
@@ -31,17 +22,3 @@ export const getVideoListForYou = async (type, page) => {
         console.log(error);
     }
 };
-
-// export const getVideoListFollowing = async ({ type = 'following', page }) => {
-//     try {
-//         const res = await request.get('videos', {
-//             params: {
-//                 type,
-//                 page,
-//             },
-//         });
-//         return res.data;
-//     } catch (error) {
-//         console.log(error);
-//     }
-// };

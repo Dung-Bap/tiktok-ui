@@ -10,6 +10,7 @@ function RecomendPreview({ data }) {
             {data.map((recommend) => {
                 return <RecomendListItem key={recommend.id} data={recommend} videoId={recommend.id} />;
             })}
+            <div className="loader"></div>
         </div>
     );
 }

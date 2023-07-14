@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -231,7 +231,6 @@ function VideoDetail() {
                             </button>
                         </div>
                     </div>
-                    Loading...
                 </div>
             </div>
         </div>

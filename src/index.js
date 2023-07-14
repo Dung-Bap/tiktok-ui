@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom/client';
 import App from '~/App';
 import GlobalStyles from './component/GlobalStyles';
 import reportWebVitals from './reportWebVitals';
-import VideoContext from './context/VideoContext/VideoContext';
+import ContextProvider from './context/ContextProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     // <React.StrictMode>
-    <VideoContext>
+    <ContextProvider>
         <GlobalStyles>
             <App />
         </GlobalStyles>
-    </VideoContext>,
+    </ContextProvider>,
     // </React.StrictMode>
 );
 
